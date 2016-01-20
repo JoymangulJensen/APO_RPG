@@ -11,7 +11,7 @@ import rpg.Character;
 import rpg.Edible;
 
 /**
- * Class used to interact with AI & player
+ * Class used to interact with AI and player
  * 
  * @author p1509413
  */
