@@ -11,6 +11,7 @@ import rpg.Ability;
 import rpg.Armor;
 import rpg.Character;
 import rpg.Item;
+import rpg.Weapon;
 import rpgException.ExistsInventoryException;
 import rpgException.MaxInventoryException;
 
@@ -56,7 +57,7 @@ public class DisplayCharacter
         try
         {
             this.character.checkInInventory(i);
-            if ("rpg.Weapon".equals(i.getClass().getName()) || "rpg.Armor".equals(i.getClass().getName()))
+            if (i.getClass() == Weapon.class || i.getClass() == Armor.class)
             {
                 Log.e("Cannot remove an armor in inventory");
             } else
@@ -109,7 +110,7 @@ public class DisplayCharacter
 
     public void displayName()
     {
-        System.out.println("The player game : " + this.character.getName());
+        System.out.println("Character : " + this.character.getName());
     }
 
     public void displarArmorInventory()

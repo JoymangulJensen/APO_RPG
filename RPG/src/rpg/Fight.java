@@ -60,6 +60,10 @@ public class Fight extends Event
         System.out.println(Main.ANSI_PURPLE + "              <W");
         System.out.println(Main.ANSI_PURPLE + "              (O)" + Main.ANSI_RESET);
         System.out.println(introMessage);
+        for (Character c : aiCharacters)
+        {
+            new DisplayCharacter(c).displayName();
+        }
         this.fight();
     }
 
@@ -92,7 +96,7 @@ public class Fight extends Event
                 System.out.println("Round of " + ca.getCharacter().getName());
                 Action a = ca.getAction();
                 aiActions.push(a);
-                new DisplayCharacter(a.getTarget()).displayAll();
+                // new DisplayCharacter(a.getTarget()).displayAll();
             }
 
             for (ControllerPlayer cp : playerControllers)
@@ -105,7 +109,7 @@ public class Fight extends Event
                 Character target = this.getCharacterByName();
                 Action a = cp.getAction(target);
                 playerActions.push(a);
-                new DisplayCharacter(target).displayAll();
+                // new DisplayCharacter(target).displayAll();
             }
             Round fightRound = new Round(playerCharacters, playerActions, aiCharacters, aiActions);
             fightRound.play();
