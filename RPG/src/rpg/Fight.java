@@ -49,6 +49,15 @@ public class Fight extends Event
     @Override
     public void launch()
     {
+        System.out.println("              (O)");
+        System.out.println("              <M");
+        System.out.println("   o          <M");
+        System.out.println("  /| ......  /:M\\------------------------------------------------,,,,,,");
+        System.out.println("(O)[]XXXXXX[]I:K+}=====<{H}>================================------------>");
+        System.out.println("  \\| ^^^^^^  \\:W/------------------------------------------------''''''");
+        System.out.println("   o          <W");
+        System.out.println("              <W");
+        System.out.println("              (O)" + Main.ANSI_RESET);
         System.out.println(introMessage);
         this.fight();
     }
