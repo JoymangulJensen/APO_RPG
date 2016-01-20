@@ -5,10 +5,10 @@
  */
 package controllerPackage;
 
-import me.grea.antoine.utils.Log;
 import model.Healer;
 import model.Warrior;
 import rpg.Action;
+import rpg.Armor;
 import rpg.Attack;
 import rpg.Capacity;
 import rpg.Character;
@@ -49,8 +49,7 @@ public class ControllerPlayer extends Controller
                     // No edible in the inventory of the character : cant use an item
                     System.out.println("You don't have any edibles in your inventory");
                     return this.getAction(target);
-                }
-                else
+                } else
                 {
                     return super.useItem(character, target, this.askItem());
                 }
@@ -77,7 +76,7 @@ public class ControllerPlayer extends Controller
                 if (character.getClass() == Healer.class)
                 {
                     System.out.println("A Healer can't do this");
-                    return this.askCapacity(target);                            
+                    return this.askCapacity(target);
                 }
                 capacity = new Attack(character, target);
                 break;
@@ -109,8 +108,6 @@ public class ControllerPlayer extends Controller
     private Edible askItem()
     {
         int choice = DisplayUI.getItemToUse(character);
-        
-        Log.d(character.getInventory().get(choice).getClass());
 
         if (character.getInventory().get(choice).getClass() == Edible.class)
         {

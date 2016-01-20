@@ -30,9 +30,10 @@ public class Fight extends Event
     {
         super(playerChacraters, aiChacraters);
     }
-    
+
     /**
-     * Constructor initializing the list of characters and displaying an intro message
+     * Constructor initializing the list of characters and displaying an intro
+     * message
      *
      * @param playerChacraters
      * @param aiChacraters
@@ -276,9 +277,28 @@ public class Fight extends Event
                 break;
             case 3:
                 return;
+            case 4:
+                if (character.getArmors().length == 0)
+                {
+                    System.out.println("No armor to equip");
+                } else
+                {
+                    this.askArmor(character);
+                }
+                break;
             default:
                 break;
         }
         turn(character);
     }
+
+    /**
+     * Ask the user to equip an armor
+     */
+    private void askArmor(Character character)
+    {
+        int choice = DisplayUI.getArmorId(character);
+        character.equipeArmor(choice);
+    }
+
 }

@@ -44,8 +44,11 @@ public class Armor extends Item
     public String toString()
     {
         String s;
-        s= "Armor : " + this.getName() + " have a wieght of " + this.getWeight() + "\n";
-        s+= " Your defence was increased by  " + this.resistance;
+        s = "Armor: " + this.getName() + " - Bonus def : " + this.resistance;
+                
+        /* + " have a wieght of " + this.getWeight() + "\n";
+        s+= " Your defence is increased by  " + this.resistance;
+        */
         return s;
     }
 }

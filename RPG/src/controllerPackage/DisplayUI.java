@@ -7,6 +7,7 @@ package controllerPackage;
 
 import java.util.Arrays;
 import java.util.HashSet;
+import rpg.Armor;
 import rpg.Capacity;
 import rpg.Character;
 
@@ -124,8 +125,8 @@ public class DisplayUI
         System.out.println("\t 1. Use a Capacity");
         if (character.getInventory().size() > 0)
         {
-            maxAction++;
             System.out.println("\t 2. Use an Item");
+            maxAction ++;
         }
 
         int choice = ControllerUI.readInt("Please select an action : ", 1, maxAction);
@@ -160,8 +161,9 @@ public class DisplayUI
         System.out.println("\t 1. Display Inventory");
         System.out.println("\t 2. Display Information About your character");
         System.out.println("\t 3. Do an action");
+        System.out.println("\t 4. Change armor");
 
-        int choice = ControllerUI.readInt("Please have a choice : ", 0, 3);
+        int choice = ControllerUI.readInt("Please have a choice : ", 0, 4);
         return choice;
     }
 
@@ -195,5 +197,25 @@ public class DisplayUI
         text += "2. Medium \n";
         text += "3. Hard";
         return ControllerUI.readInt(text, 1, 3);
+    }
+
+    /**
+     * Ask the user for an armor
+     * @param character
+     * @return 
+     */
+    public static int getArmorId(Character character)
+    {
+        int index = 0;
+        String text = "Select an armor \n";
+        
+        for (Armor a : character.getArmors())
+        {
+            text += "\t" + index + ". " + a.getName();
+            text += "\t\t" + a.toString() + "\n";
+            index ++;
+        }
+        
+        return ControllerUI.readInt(text, 0, character.getArmors().length - 1);
     }
 }
