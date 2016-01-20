@@ -14,17 +14,23 @@ import rpg.Weapon;
 
 /**
  * Class representing the "class" of character warrior
+ *
  * @author p1509413
  */
 public final class Warrior extends Character
 {
-   
+
+    /**
+     * Maximum Health of the class Warrior
+     */
+    protected final int MAX_HEALTH_WARRIOR = 300;
+
     public Warrior()
     {
         super();
         this.setMaxHealth(MAX_HEALTH_WARRIOR);
     }
-    
+
     /**
      * Init the inventory of the warrior
      */

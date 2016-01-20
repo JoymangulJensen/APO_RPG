@@ -8,7 +8,8 @@ package rpg;
 import java.util.ArrayList;
 
 /**
- *
+ * Class representing an event of the game
+ * 
  * @author seljo
  */
 public abstract class Event

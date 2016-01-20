@@ -9,10 +9,17 @@ import rpg.Character;
 
 /**
  * Class ennemy used for AI characters
+ *
  * @author Gaetan
  */
 public final class Ennemy extends Character
 {
+
+    /**
+     * Maximum Health of the class Enemy
+     */
+    protected final int MAX_HEALTH_ENNEMY = 100;
+
     /**
      * Constructor
      */

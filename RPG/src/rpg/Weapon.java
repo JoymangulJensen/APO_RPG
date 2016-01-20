@@ -12,10 +12,11 @@ package rpg;
  */
 public class Weapon extends Item
 {
+
     //-------------- Attributes -----------------------*
+
     private int manageability;  //ease of use of weapon(depends on dexterity)
 
-    
     //----------------------- Getter --------------------------------
     public int getManageability()
     {
@@ -27,14 +28,15 @@ public class Weapon extends Item
     {
         this.manageability = manageability;
     }
-    
+
     /**
-    * Constructor
-    * @param name  Name of weapon
-    * @param w     Weight of weapon
-    * @param efficiency    Efficiency of weapon
-    * @param managable     manageability of weapon
-    */
+     * Constructor
+     *
+     * @param name Name of weapon
+     * @param w Weight of weapon
+     * @param efficiency Efficiency of weapon
+     * @param managable manageability of weapon
+     */
     public Weapon(String name, int w, int efficiency, int managable)
     {
         super(name, w, true);

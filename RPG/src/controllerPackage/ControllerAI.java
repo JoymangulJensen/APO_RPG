@@ -91,7 +91,7 @@ public class ControllerAI extends Controller
     }
 
     /**
-     *
+     * Chose a target from one of the two teams
      *
      * @return the target chosen
      */

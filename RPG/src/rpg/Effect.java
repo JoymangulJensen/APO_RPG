@@ -27,6 +27,11 @@ public class Effect
     private int duration = 0; 
     
     /**
+     * Max duration of an effect
+     */
+    private final int MAX_DURATION = 1000;
+    
+    /**
      * Creation of an effect
      * 
      * @param a  The ability concerned by the effect
@@ -73,8 +78,8 @@ public class Effect
     public String toString()
     {
         String s;
-        s = "       Effect on " + this.getAbility().name() + " with an efficiency of " + this.getValue() ;
-        if(this.getDuration()<1000) //would not write duration for armor and weapon
+        s = "\tEffect on " + this.getAbility().name() + " with an efficiency of " + this.getValue() ;
+        if(this.getDuration()< MAX_DURATION) //would not write duration for armor and weapon
             s+= " for " + this.getDuration() + " round";
         return s;
     }

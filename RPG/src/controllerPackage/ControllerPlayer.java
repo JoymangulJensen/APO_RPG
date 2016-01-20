@@ -8,7 +8,6 @@ package controllerPackage;
 import model.Healer;
 import model.Warrior;
 import rpg.Action;
-import rpg.Armor;
 import rpg.Attack;
 import rpg.Capacity;
 import rpg.Character;
@@ -62,7 +61,7 @@ public class ControllerPlayer extends Controller
      * Ask the player for a capacity
      *
      * @param target the target selected before
-     * @return
+     * @return the capacity
      */
     private Capacity askCapacity(Character target)
     {
@@ -103,7 +102,7 @@ public class ControllerPlayer extends Controller
      * Get an item to use from the character
      *
      * @param target
-     * @return
+     * @return the edible got from the inventory of the character
      */
     private Edible askItem()
     {

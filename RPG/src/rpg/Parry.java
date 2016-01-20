@@ -13,7 +13,7 @@ package rpg;
 public class Parry implements Capacity
 {
 
-    private Character source;
+    private final Character source;
 
     private static final Ability PARRY_ABILITY = Ability.DEFENCE;
 

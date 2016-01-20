@@ -20,12 +20,17 @@ import rpg.Weapon;
 public final class Healer extends Character
 {
 
+    /**
+     * Maximum Health of the class Healer
+     */
+    protected final int MAX_HEALTH_HEALER = 100;
+
     public Healer()
     {
         super();
         this.setMaxHealth(MAX_HEALTH_HEALER);
     }
-    
+
     /**
      * Init the inventory of the healer
      */

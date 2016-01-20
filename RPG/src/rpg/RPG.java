@@ -25,11 +25,6 @@ public class RPG
 {
 
     /**
-     * Controller
-     */
-    private static ControllerUI cp;
-
-    /**
      * Maximum number of characters in the team of the player
      */
     private static final int MAX_NB_CHARACTERS = 3;
@@ -37,54 +32,26 @@ public class RPG
     /**
      * List of the characters of the player
      */
-    private ArrayList<Character> playerCharacters;
+    private final ArrayList<Character> playerCharacters;
 
     /**
      * List of the characters of the AI
      */
-    private ArrayList<Character> aiCharacters;
+    private final ArrayList<Character> aiCharacters;
 
     /**
      * Stack of events for the scenario
      */
-    private Stack<Event> events;
+    private final Stack<Event> events;
 
     /**
      * Constructor
      */
     public RPG()
     {
-        cp = new ControllerUI();
-
         aiCharacters = new ArrayList<>();
         playerCharacters = new ArrayList<>();
         events = new Stack<>();
-
-//        Character c = new Character("Selwyn");
-//        Character c2 = new Character("Gaetan");
-//        DisplayCharacter dc = new DisplayCharacter(c);
-//        DisplayCharacter dc2 = new DisplayCharacter(c2);
-//        dc.displayName();
-//        dc.displayAbilities();
-//        dc2.displayName();
-//        dc2.displayAbilities();
-//        Effect e1 = new Effect(Ability.DEXTERITY, 20, 2);
-//        Item i = new Item("Item 1", 20, false);
-//        i.setEffect(e1);
-//        dc.addItem(i);
-//        Weapon w = new Weapon("arme", 60, 90, 50);
-//        Armor a = new Armor("armure", 20, 50);
-//        dc.addItem(w);
-//        dc2.addItem(a);
-//        dc.displayAbilities();
-//        dc2.displayAbilities();
-//        Attack att = new Attack(c, c2);
-//        Action act = new Action(c, c2, att);
-//        act.useCapacity();
-//        Heal hl = new Heal(c2);
-//        Action act2 = new Action(c2, hl);
-//        dc2.displayAbilities();
-//        act2.useCapacity();
         start();
     }
 
@@ -94,7 +61,7 @@ public class RPG
     private void start()
     {
         DisplayUI.displayStartText();
-        int option = cp.readInt("Please select the number corresponding to your choice : ");
+        int option = ControllerUI.readInt("Please select the number corresponding to your choice : ");
         switch (option)
         {
             case 1:
@@ -232,6 +199,7 @@ public class RPG
      */
     private void initEvents()
     {
+        events.add(this.getEvent4());
         events.add(this.getEvent3());
         events.add(this.getEvent2());
         events.add(this.getEvent1());
@@ -268,7 +236,7 @@ public class RPG
         s2.setItemFound(items);
         return s2;
     }
-    
+
     /**
      * Event n°3 : fight
      *
@@ -281,7 +249,7 @@ public class RPG
         s3.setIntroMessage(message3);
         return s3;
     }
-    
+
     /**
      * Event n°4 : the end
      *

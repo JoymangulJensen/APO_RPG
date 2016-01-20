@@ -18,7 +18,7 @@ import me.grea.antoine.utils.Log;
  *
  * @author p1509413
  */
-public class Character
+public abstract class Character
 {
     // -------------- Attributes
 
@@ -32,38 +32,22 @@ public class Character
     protected int currentHealth;      // Current health of the character
     protected Armor armors[];         //armors of the character
     protected Armor currentArmor;     //Current armor of character
-    
+
     // -------------- Constants
-    
     /**
      * Maximum Health at the creation
      */
     protected final int INIT_MAX_HEALTH = 100;
-    
-    /**
-     * Maximum Health of the class Athlete
-     */
-    protected final int MAX_HEALTH_ATHLETE = 200;
-    
-    /**
-     * Maximum Health of the class Enemy
-     */
-    protected final int MAX_HEALTH_ENNEMY = 100;
-    
-    /**
-     * Maximum Health of the class Warrior
-     */
-    protected final int MAX_HEALTH_WARRIOR = 300;
-    
-    /**
-     * Maximum Health of the class Healer
-     */
-    protected final int MAX_HEALTH_HEALER = 100;
-    
+
     /**
      * Maximum sum of abilities
      */
     private final int OVERPOWERED = 500;
+    
+    /**
+     * Ratio of HP regained after a fight
+     */
+    private final static double HEALTH_REGAIN = 0.4;
 
     // -------------- Constructors ----------------------------------
     /**
@@ -90,7 +74,7 @@ public class Character
         this.setMaxDexterity(10);
         this.initAbilities();
         this.initInventory();
-        
+
     }
 
     // -------------- Getters And Setters -------------------------------
@@ -169,17 +153,17 @@ public class Character
     {
         return currentArmor;
     }
-    
+
     /**
-     * 
+     *
      * @param i 0: equip first armor 1: equip second amor
      * @return success of method
      */
     public boolean equipeArmor(int i)
     {
-        if(i==0 || i==1)
+        if (i == 0 || i == 1)
         {
-            this.currentArmor  = this.armors[i];
+            this.currentArmor = this.armors[i];
             return true;
         } else
         {
@@ -187,16 +171,17 @@ public class Character
             return false;
         }
     }
-    
+
     /**
      * Add an armor in armor inventory(replace an armor also)
+     *
      * @param a armor to armor
      * @param i index to replace existing armor (0 or 1)
      * @return success of method
      */
     public boolean addArmorInInventory(Armor a, int i)
     {
-        if(i == 0 || i==1)
+        if (i >= 0 || i < this.armors.length)
         {
             this.armors[i] = a;
             return true;
@@ -211,7 +196,7 @@ public class Character
     {
         for (Item i : this.getInventory())
         {
-            if ("rpg.Weapon".equals(i.getClass().getName()))
+            if (i.getClass() == Weapon.class)
             {
                 return (Weapon) i;
             }
@@ -234,11 +219,10 @@ public class Character
     {
         Ability a = e.getAbility();
         System.out.println("Applying : " + e.toString());
-        if(a == Ability.HEALTH) //Change value of cuurent health if effect is on Ability HEALTH
+        if (a == Ability.HEALTH) //Change value of cuurent health if effect is on Ability HEALTH
         {
             this.currentHealth = Math.min(this.maxHealth, this.currentHealth + e.getValue());
-        }
-        else    //Change Ability value
+        } else    //Change Ability value
         {
             int newValue = this.abilities.get(a) + e.getValue();
             this.abilities.put(a, newValue);
@@ -247,6 +231,7 @@ public class Character
 
     /**
      * Get the current weight of the inventory
+     *
      * @return the weight of the inventory
      */
     public int getInventoryWeight()
@@ -302,11 +287,11 @@ public class Character
         this.level++;
         for (Map.Entry<Ability, Integer> map : abilities.entrySet())
         {
-            int newValue = (int) (((int) map.getValue()*0.2) + map.getValue());
+            int newValue = (int) (((int) map.getValue() * 0.2) + map.getValue());
             map.setValue(newValue);
         }
         DisplayCharacter dc = new DisplayCharacter(this);
-        System.out.println(Main.ANSI_GREEN + this.getName() +" level up!! Level : " + this.level + Main.ANSI_RESET);
+        System.out.println(Main.ANSI_GREEN + this.getName() + " level up!! Level : " + this.level + Main.ANSI_RESET);
         dc.displayAbilities();
     }
 
@@ -329,6 +314,7 @@ public class Character
 
     /**
      * Return the value of the given ability
+     *
      * @param ability
      * @return the value of the given ability
      */
@@ -342,8 +328,8 @@ public class Character
      */
     public void reinitHealth()
     {
-        this.currentHealth += (this.currentHealth * 0.4);
-        if(this.currentHealth > this.maxHealth)
+        this.currentHealth += (this.currentHealth * HEALTH_REGAIN);
+        if (this.currentHealth > this.maxHealth)
         {
             this.currentHealth = this.maxHealth;
         }
@@ -360,7 +346,7 @@ public class Character
         this.abilities.put(Ability.STRENGTH, 10);
         this.abilities.put(Ability.DEXTERITY, 10);
     }
-    
+
     /**
      * Initialize the inventory adding few items
      */
@@ -372,10 +358,10 @@ public class Character
         this.armors[1] = new Armor("DefaultArmor2", 40, 75);
         this.equipeArmor(0);
     }
-    
+
     /**
      * Get the number of edibles in the inventory
-     * 
+     *
      * @return the number of edibles in the inventory
      */
     public int getNbEdibles()
@@ -384,7 +370,9 @@ public class Character
         for (Item i : inventory)
         {
             if (i.getClass() == Edible.class)
-                number ++;
+            {
+                number++;
+            }
         }
         return number;
     }
@@ -395,7 +383,7 @@ public class Character
     private void checkAbilities()
     {
         int somme = 0;
-        for (int i = 0; i < abilities.size(); i ++)
+        for (int i = 0; i < abilities.size(); i++)
         {
             somme += abilities.get(i);
         }
@@ -405,17 +393,21 @@ public class Character
             // Faire un contrôle plus sérieux ! 
         }
     }
-    
+
     /**
      * Method to test if a character is dead
+     *
      * @return true character is dead; false character is still alive
      */
     public boolean isDead()
     {
-        if(this.currentHealth<=0)
+        if (this.currentHealth <= 0)
+        {
             return true;
-        else
+        } else
+        {
             return false;
+        }
     }
 
     /**
@@ -446,7 +438,8 @@ public class Character
 
     /**
      * Display the important information about the character
-     * @return 
+     *
+     * @return
      */
     @Override
     public String toString()
@@ -454,7 +447,7 @@ public class Character
         String s = "------------------------------------ \n";
         s += "Name : " + this.name + "\n";
         s += "Health : " + this.currentHealth + "\n";
-        s += "Class : " +  this.getClass().getSimpleName() + "\n";
+        s += "Class : " + this.getClass().getSimpleName() + "\n";
         s += "------------------------------------ \n";
         return s;
     }

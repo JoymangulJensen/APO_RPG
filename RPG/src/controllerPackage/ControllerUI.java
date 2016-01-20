@@ -15,7 +15,7 @@ import java.util.Scanner;
 public class ControllerUI
 {
 
-    private static Scanner scanner = new Scanner(System.in);
+    private static final Scanner scanner = new Scanner(System.in);
 
     /**
      * Read an integer from the console The message is repeated until a correct

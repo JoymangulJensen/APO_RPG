@@ -12,6 +12,7 @@ package rpg;
  */
 public class Item
 {
+
     protected Effect effect;    //Effect of the item
     protected String name = "Default"; // Name of item
     protected int weight;       //Weight of item
@@ -30,7 +31,7 @@ public class Item
         this.weight = w;
         this.using = using;
     }
-    
+
     /**
      * Constructor with also effect as argument
      *
@@ -39,9 +40,9 @@ public class Item
      * @param using : use or not the item
      * @param e : effect of item
      */
-    public Item(String n , int w ,boolean using, Effect e)
+    public Item(String n, int w, boolean using, Effect e)
     {
-        this(n,w,using);
+        this(n, w, using);
         this.setEffect(e);
     }
 
@@ -56,7 +57,6 @@ public class Item
     }
 
     // ------ Getters
-    
     public Effect getEffect()
     {
         return effect;
@@ -71,14 +71,13 @@ public class Item
     {
         return weight;
     }
- 
-    
+
     @Override
     public String toString()
     {
         String s;
-        s= "Item : " + this.getName() + " have a wieght of " + this.getWeight() + "\n";
-        s+= this.getEffect().toString() + "\n";
+        s = "Item : " + this.getName() + " have a wieght of " + this.getWeight() + "\n";
+        s += this.getEffect().toString() + "\n";
         return s;
     }
 }

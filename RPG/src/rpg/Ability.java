@@ -6,7 +6,7 @@
 package rpg;
 
 /**
- * Enum representing all the stats
+ * Enum representing all the abilities
  *
  * @author p1509413
  */

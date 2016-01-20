@@ -20,12 +20,17 @@ import rpg.Weapon;
 public final class Athlete extends Character
 {
 
+    /**
+     * Maximum Health of the class Athlete
+     */
+    protected final int MAX_HEALTH_ATHLETE = 200;
+
     public Athlete()
     {
         super();
         this.setMaxHealth(MAX_HEALTH_ATHLETE);
     }
-    
+
     @Override
     protected void initInventory()
     {

@@ -15,8 +15,8 @@ import me.grea.antoine.utils.Dice;
 public class Heal implements Capacity
 {
 
-    private Character source;
-    private Character target;
+    private final Character source;
+    private final Character target;
 
     public Heal(Character source, Character target)
     {

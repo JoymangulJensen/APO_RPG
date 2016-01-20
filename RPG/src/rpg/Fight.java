@@ -51,14 +51,14 @@ public class Fight extends Event
     public void launch()
     {
         System.out.println(Main.ANSI_PURPLE + "              (O)");
-        System.out.println(Main.ANSI_PURPLE +"              <M");
-        System.out.println(Main.ANSI_PURPLE +"   o          <M");
-        System.out.println(Main.ANSI_PURPLE +"  /| ......  /:M\\------------------------------------------------,,,,,,");
-        System.out.println(Main.ANSI_PURPLE +"(O)[]XXXXXX[]I:K+}=====<{H}>================================------------>");
-        System.out.println(Main.ANSI_PURPLE +"  \\| ^^^^^^  \\:W/------------------------------------------------''''''");
-        System.out.println(Main.ANSI_PURPLE +"   o          <W");
-        System.out.println(Main.ANSI_PURPLE +"              <W");
-        System.out.println(Main.ANSI_PURPLE +"              (O)" + Main.ANSI_RESET);
+        System.out.println(Main.ANSI_PURPLE + "              <M");
+        System.out.println(Main.ANSI_PURPLE + "   o          <M");
+        System.out.println(Main.ANSI_PURPLE + "  /| ......  /:M\\------------------------------------------------,,,,,,");
+        System.out.println(Main.ANSI_PURPLE + "(O)[]XXXXXX[]I:K+}=====<{H}>================================------------>");
+        System.out.println(Main.ANSI_PURPLE + "  \\| ^^^^^^  \\:W/------------------------------------------------''''''");
+        System.out.println(Main.ANSI_PURPLE + "   o          <W");
+        System.out.println(Main.ANSI_PURPLE + "              <W");
+        System.out.println(Main.ANSI_PURPLE + "              (O)" + Main.ANSI_RESET);
         System.out.println(introMessage);
         this.fight();
     }
