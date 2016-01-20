@@ -84,7 +84,7 @@ public class Round
         for(Character c: this.playerCharacters)
         {
             c.removeEffect();
-            c.reinitHealth();
+            //c.reinitHealth();
             DisplayCharacter dc = new DisplayCharacter(c);
             System.out.println(Main.ANSI_CYAN + c.getName() + "->" + Main.ANSI_RESET);
             dc.displayHealth();
@@ -93,7 +93,7 @@ public class Round
         for(Character c: this.aiCharacters)
         {
             c.removeEffect();
-            c.reinitHealth();
+            //c.reinitHealth();
             DisplayCharacter dc = new DisplayCharacter(c);
             System.out.println(Main.ANSI_CYAN + c.getName() + "->" + Main.ANSI_RESET);
             dc.displayHealth();
