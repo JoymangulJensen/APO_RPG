@@ -183,7 +183,7 @@ public class Character
             return true;
         } else
         {
-            System.out.println(Main.ANSI_RED + "You cannot equipe an armor you don' possess" + Main.ANSI_RESET);
+            System.out.println(Main.ANSI_RED + "You cannot equipe an armor you don't possess" + Main.ANSI_RESET);
             return false;
         }
     }
